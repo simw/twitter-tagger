@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/main.js"></script>
+  </head>
+  <body>
+  <a href="/tagging?sort=user_followers">Sort by followers</a>
+  <a href="/tagging?sort=lang">Sort by language</a>
+    <h1>Tweets</h1>
+    <ul>
+      {% for tweet in tweets %}
+      <li>
+        <a href="#!" onclick="like('{{ tweet._id }}')">Like</a>
+        <a href="#!" onclick="dislike('{{ tweet._id }}')">Dislike</a>
+      {{ tweet.created_at }} {{ tweet.user }} ({{ tweet.user_followers }}) : ({{ tweet.lang }}) {{ tweet.text }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

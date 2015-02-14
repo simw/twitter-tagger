@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/main.js"></script>
+  </head>
+  <body>
+    <h1>Likes</h1>
+    <ul>
+      {% for tweet in likes %}
+      <li>
+        <a href="#" onclick="clearPreference('{{ tweet._id }}')">Clear</a>
+        {{ tweet.created_at }} {{ tweet.user }} ({{ tweet.user_followers }}) : 
+          ({{ tweet.lang }}) {{ tweet.text }}</li>
+      {% endfor %}
+    </ul>
+
+    <h1>Dislikes</h1>
+    <ul>
+      {% for tweet in dislikes %}
+      <li>
+        <a href="#" onclick="clearPreference('{{ tweet._id }}')">Clear</a>
+        {{ tweet.created_at }} {{ tweet.user }} ({{ tweet.user_followers }}) 
+          : ({{ tweet.lang }}) {{ tweet.text }}</li>
+      {% endfor %}
+    </ul>
+
+
+  </body>
+</html>

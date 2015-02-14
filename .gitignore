@@ -1,0 +1,16 @@
+get_dump.sh
+ssh-aws.sh
+**/deploy.sh
+
+*.pyc
+*.swp
+*.swo
+
+dump/
+
+**/lib/
+**/twitter_credentials.py
+
+**/.ipynb_checkpoints/
+
+*.log
