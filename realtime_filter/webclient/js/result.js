@@ -16,7 +16,15 @@ window.onload = function() {
         var tweet = JSON.parse(e.data);
         var el = document.getElementById('tweetlist');
         var li = document.createElement('li');
-        li.appendChild(document.createTextNode(tweet.text));
+        var liked = tweet.like;
+        var text = tweet.user + ': ' + tweet.text;
+
+        li.appendChild(document.createTextNode(text));
+        if (liked) {
+            li.style.color = 'black';
+        } else {
+            li.style.color = 'gray';
+        }
         el.appendChild(li);
 
         // if (typeof e.data === 'string') {

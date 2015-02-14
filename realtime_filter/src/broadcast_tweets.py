@@ -116,13 +116,18 @@ class BroadcastServerFactory(WebSocketServerFactory):
         tweet = self.parser.parse(keys, tweet)
         X_new = self.vect.transform([tweet['text']]) 
         y_new = self.clf.predict(X_new)
-        print('y_new = {}'.format(y_new))
+        print('{},'.format(y_new[0]), end='')
         if y_new[0] == 1:
+            tweet['like'] = 1
             self.broadcast(json.dumps(tweet))
             self.tweet_count += 1
             if self.tweet_count % LOG_FREQ == 0:
                 print('Passed on {} tweets'.format(self.tweet_count))
         else:
+            # Really, we wouldn't broadcast disliked tweets
+            # But here, we'll do it and highlight on the other end
+            tweet['like'] = 0
+            self.broadcast(json.dumps(tweet))
             self.rejected_count += 1
             if self.rejected_count % LOG_FREQ == 0:
                 print('Rejected {} tweets'.format(self.rejected_count))
