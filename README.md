@@ -4,6 +4,8 @@
 
 Ipython notebook exploring the twitter data
 
+View online using nbviewer [here](http://nbviewer.ipython.org/github/simw/twitter-tagger/blob/master/CurrencyTweetExplorer.ipynb)
+
 ## twitter_saver
 
 Saves tweets to mongo
